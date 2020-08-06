@@ -4,7 +4,7 @@ wget -O qtcreator-src.zip https://github.com/francescmm/ci-utils/releases/downlo
 unzip -qq qtcreator-src.zip
 wget -O qtcreator-bin.zip https://github.com/francescmm/ci-utils/releases/download/qt/qt-creator-bin-osx.zip;
 unzip -qq qtcreator-bin.zip
-export QT_CREATOR=bin/QtCreator.app/Contents/MacOS
+export QT_CREATOR=bin/QtCreator.app/
 export PATH="/usr/local/opt/qt/bin:$QT_CREATOR:$PATH"
 export QT_PLUGIN_PATH=$PWD/qt5/plugins;
 export PLUGIN_VERSION="0.4.8";
