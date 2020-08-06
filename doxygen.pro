@@ -22,14 +22,15 @@ FORMS += \
     doxygensettingswidget.ui \
     doxygenfilesdialog.ui
 
-RESOURCES += doxygen.qrc
+RESOURCES += doxygen.qrc \
+    .travis.yml
 
 # Qt Creator linking
 
 ## set the QTC_SOURCE variable to override the setting here
 QTCREATOR_SOURCES = $$QTC_SOURCE
-unix:isEmpty(QTCREATOR_SOURCES):QTCREATOR_SOURCES=$$(HOME)/src/qt-creator-opensource-src-4.10.0
-win32:isEmpty(QTCREATOR_SOURCES):QTCREATOR_SOURCES=C:\src\qt-creator-opensource-src-4.10.0
+unix:isEmpty(QTCREATOR_SOURCES):QTCREATOR_SOURCES=$$(HOME)/Qt/qt-creator-opensource-src-4.12.0
+win32:isEmpty(QTCREATOR_SOURCES):QTCREATOR_SOURCES=C:\src\qt-creator-opensource-src-4.12.0
 
 ## set the QTC_BUILD variable to override the setting here
 IDE_BUILD_TREE = $$QTC_BUILD

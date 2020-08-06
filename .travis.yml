@@ -1,0 +1,35 @@
+language: cpp
+env:
+  matrix:
+  - QTC_VERSION="4.12"
+  global:
+    secure: Z7dfshRqJRyxj3kj+n2NUNNf7F1QTBIz8eW39EohlDRM+W1zCh+mZ5TP61IO7a2fJ8mHXfdaTNtzaFeGN00k3tDKtsVOMdDQVsFR9CmFn9t7xJUsVbl39prO5iXL+bPpCrrx5DMQUiw2fX10gQFZqv6mHKoIGh/khhl1ybwSHpZFOlGS6Ec6Hq5QcKxlxkL546r6vPQeut1bbPWsx4ieUQK8LPqRKDVwcMo2Sv0cEfyYyflgdTdeeAhW0c+JsC4MPni6tEaxhk1rwUYdxGUxTs17RtsVqNNSi9VvFLwzmfY07u03QfBVz7el5MHUY0mFkM26T3bCWm+Gk/YGi7oxs37Vo8Tyb2iTT/e8By5kiNx5rkJmd/c/LzHycq9AwwiRti9lYlGO1U3DO+qIVgC7zJy5J9GzHJHXlEuobp9yvrYsGnlhG7oJ8ULCfgtggcmM+rJ7Gw89O6akECQCAvO6ZHDal0jsZFZnCWUUNwkdRHtvX47OeABHkbjlKVXG3SH5d57Xv18cxD1rpNuZi99y2o6wOmydn5DDWEgckWe1cmv9NJk7/8dnwgdyKZVjpwAXmGivBV8TiGXdnJUqK1r3tx4UcOyzH3rjqYRS0uQJsGedfqLBV8OINtPwDNklVbc3RZrM5AmQNxRX87fifeqXEvm+YkLUl1oJGBkLBaZUf/8=
+git:
+  depth: 1
+root: required
+dist: bionic
+install:
+- bash ci-scripts/$TRAVIS_OS_NAME/install.sh
+script:
+- bash ci-scripts/$TRAVIS_OS_NAME/build.sh
+jobs:
+  include:
+  - os: osx
+    osx_image: xcode10.1
+  - os: linux
+    compiler: gcc
+before_deploy:
+- git config --local user.name "Francesc Martinez"
+- git config --local user.email "francescmm@gmail.com"
+- export FILE=$(ls libDoxygen-qtc*)
+deploy:
+  provider: releases
+  token:
+    secure: PaSHclRssl8ufiAFALN6gydOkqiS/rQsdu30QHtPVFdby2sTMK8ZkaJo4uZf9wNkd9K4oovgXH7O8pMpH8MHFOuVf+d//gbcynxNxvjgw0f8VfGFsJqox66q8CcHlkuc66w+1EdMdVC6tSK9BYf8NcVafJNJu4HD4hqnWtHcrnUCSFuzWUCky3cu3VFka4DBc1zNCHztmos7uyNo7k0ttFBObbspJ4xQc7ZikSbVJpEmJ75lpY8cEVVI/6twls/xORdduymmo1Bb3/bZ8n2BVXD9Yi/rVrcWgguDgUMmmfZfuQkNVaO1yR6uhPfPHFC+DGWkF5hG1YOJC25RXjqB8slsAvHIUI7XCDKsxw6Mc13BxMUyGStqIHcnxGd7dJaowwiyPfEtDzao8nVOdxFu0eca8gRr7CJfEd+a+lDfqMvkeOQQfvF1JWlRyFUq/Nel/aSS+6HlwcFvD02o7eHwuwSGI6SUvkR9ne0ruSjmGBUMK8OViYUkyb1l4lTOk8AQAjLFzXFcO9PmpzQYfWg4iOvDy9sWUM6oUtAdHwIA2iUHd0AxEgL+8XMSwP7y1UDyZENW2QdySjmmAoVFoys6LPgN9w5zM8/wOZIaz2lx5KWZHhPasDJeLT5EpI0TNQTuXlExicYwca3Q1zXfI9XMSFEnsGm45jzevOaufYx3KH8=
+  file: "${FILE}"
+  skip_cleanup: true
+  prerelease: true
+  draft: true
+  on:
+    tags: true
+    repo: francescmm/qtcreator-doxygen
