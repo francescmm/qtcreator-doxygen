@@ -26,6 +26,7 @@ RESOURCES += doxygen.qrc \
     .travis.yml
 
 # Qt Creator linking
+osx:QMAKE_RPATHDIR=$$QTC_BUILD
 
 ## set the QTC_SOURCE variable to override the setting here
 QTCREATOR_SOURCES = $$QTC_SOURCE
