@@ -7,8 +7,8 @@ unzip -qq qtcreator-bin.zip
 export QT_CREATOR=bin/QtCreator.app/Contents/MacOS
 export PATH="/usr/local/opt/qt/bin:$QT_CREATOR:$PATH"
 export QT_PLUGIN_PATH=$PWD/qt5/plugins;
-export PLUGIN_VERSION="1.0.1";
+export PLUGIN_VERSION="0.4.8";
 source ~/.bash_profile
-qmake QTC_SOURCE=./qt-creator-opensource-src-${QTC_VERSION}.0 QTC_BUILD=. doxygen.pro
+qmake QTC_SOURCE=./qt-creator-opensource-src-${QTC_VERSION}.0 QTC_BUILD=bin/QtCreator.app/ doxygen.pro
 make
 cp bin/QtCreator.app/Contents/PlugIns/libDoxygen.dylib libDoxygen_$PLUGIN_VERSION-qtc${QTC_COMPAT}.0.dylib
