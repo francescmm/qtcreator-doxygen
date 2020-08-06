@@ -11,4 +11,4 @@ export PLUGIN_VERSION="1.0.1";
 source ~/.bash_profile
 qmake QTC_SOURCE=./qt-creator-opensource-src-${QTC_VERSION}.0 QTC_BUILD=. doxygen.pro
 make
-cp bin/Qt\ Creator.app/Contents/PlugIns/libDoxygen.dylib libDoxygen_$PLUGIN_VERSION-qtc${QTC_COMPAT}.0.dylib
+cp bin/Qt\\ Creator.app/Contents/PlugIns/libDoxygen.dylib libDoxygen_$PLUGIN_VERSION-qtc${QTC_COMPAT}.0.dylib
