@@ -8,8 +8,7 @@ export QTDIR=$PWD/qt5
 export QT_CREATOR=$PWD/Tools/QtCreator/bin
 export PATH=$QTDIR/bin:$QT_CREATOR:$PATH;
 export QT_PLUGIN_PATH=$PWD/qt5/plugins;
-export PLUGIN_VERSION="0.4.8";
 export FIE=Tools/QtCreator/lib/qtcreator/plugins/libDoxygen.so
 $QTDIR/bin/qmake QTC_SOURCE=./qt-creator-opensource-src-${QTC_VERSION}.0 QTC_BUILD=./Tools/QtCreator doxygen.pro
 make -j 4
-cp -v Tools/QtCreator/lib/qtcreator/plugins/libDoxygen.so libDoxygen.so
+cp -v Tools/QtCreator/lib/qtcreator/plugins/libDoxygen.so libDoxygen_${PLUGIN_VERSION}-qtc${QTC_VERSION}.so

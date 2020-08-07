@@ -1,7 +1,8 @@
 language: cpp
 env:
-  matrix:
+  global:
   - QTC_VERSION="4.12"
+  - PLUGIN_VERSION="0.4.9";
 git:
   depth: 1
 root: required
@@ -19,7 +20,7 @@ jobs:
 before_deploy:
   - git config --local user.name "Francesc Martinez"
   - git config --local user.email "francescmm@gmail.com"
-  - export FILE=$(ls libDoxygen*)
+  - export FILE=$(ls libDoxygen_${PLUGIN_VERSION}-qtc${QTC_VERSION}.*)
 deploy:
   provider: releases
   prerelease: true
